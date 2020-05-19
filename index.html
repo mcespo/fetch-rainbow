@@ -8,15 +8,21 @@
 </head>
 
 <body>
-  <img src="" id="rainbow" alt="">
+  <img src="" id="rainbow" alt="image of a rainbow">
   <script>
-    rainbow()
-      .catch(err => console.error(`Error: ${err}`));
 
-    async function rainbow() {
+    catchRainbow()
+    .then(response => {
+      console.log('awesome!')
+    })
+    .catch(error => {
+      console.log('Error');
+      console.error(error);
+    })
+
+    async function catchRainbow() {
       const response = await fetch('rainbow.jpg');
       const imgBlob = await response.blob();
-
       document.getElementById('rainbow').src = URL.createObjectURL(imgBlob);
     }
   </script>
